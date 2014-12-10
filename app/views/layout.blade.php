@@ -10,8 +10,8 @@
 {{ HTML::Style('css/dzStyle.css') }}
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="navbar-header" style="background:maroon">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbar-header" style="background:#CCC;">
     	<a class="navbar-brand" href="{{ URL::to('/home')}}">Leave App</a>
   	</div>
     <div class="col-md-8">
@@ -37,7 +37,7 @@
   @endif
 	@yield('container')
 </div>
-<footer class="dzFooter nav navbar-inverse text-center" style="height:50px; padding-top:15px; color:#FFF ">
+<footer class="dzFooter nav navbar-default text-center" style="position:fixed; bottom:0px; width:100%; height:50px; padding-top:15px; color:#000 ">
      &copy;  <?=date('Y')?> 
 </footer>
 </body>
