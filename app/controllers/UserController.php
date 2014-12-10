@@ -82,5 +82,41 @@ class UserController extends \BaseController {
 		//
 	}
 
+	public function login(){
+		return View::make('login');
+	}
+
+	public function authenticate(){
+		$rules = array(
+			'username' => 'required',
+			'password' => 'required'
+			);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails())
+		{
+			return Redirect::route('login')->withErrors($validator);
+		}
+		else
+		{
+			$attempt = Auth::attempt([
+					'username' => Input::get('username'),
+					'password' => Input::get('password')
+				]);
+
+			if ($attempt) {
+				return Redirect::to('/');
+			}
+			else
+				return Redirect::to('login')->with(['flash_message'=>'Invalid Username or Password'])->withInput();
+		}
+	}
+
+	public function logout(){
+		Auth::logout();
+		return Redirect::to('login');
+	}
+
 
 }
