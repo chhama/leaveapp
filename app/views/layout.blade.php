@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Gallery</title>
+<title>Leave App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {{ HTML::Style('css/bootstrap.min.css') }}
 {{ HTML::Script('js/jquery.js') }}
