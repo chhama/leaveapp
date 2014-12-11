@@ -4,10 +4,13 @@
 <meta charset="utf-8">
 <title>Leave App</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{ HTML::Script('js/jquery-1.11.1.min.js') }}
 {{ HTML::Style('css/bootstrap.min.css') }}
-{{ HTML::Script('js/jquery.js') }}
-{{ HTML::Script('js/jquery.js') }}
-{{ HTML::Style('css/dzStyle.css') }}
+{{ HTML::Script('js/bootstrap-datetimepicker.js') }}
+{{ HTML::Script('js/npm.js') }}
+{{ HTML::Style('css/bootstrap-theme.min.css') }}
+{{ HTML::Style('css/bootstrap.css') }}
+{{ HTML::Style('css/jquery.datetimepicker.css') }}
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
