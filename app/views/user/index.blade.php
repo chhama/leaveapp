@@ -1,5 +1,19 @@
 @extends('layout')
 
+@section('extrajs')
+<script language="javascript">
+$(document).ready(function() {
+    $('#datetimepicker1').datetimepicker({
+        step: 5
+    });
+
+    $('#datetimepicker2').datetimepicker({
+        step: 5
+    });
+});
+</script>
+@stop
+
 @section('container')
 <div class="col-md-8">
 <form method="get">
@@ -137,13 +151,5 @@
     </div>
 </div>
 
-<script>
-    $('#datetimepicker1').datetimepicker({
-        step: 5
-    });
 
-    $('#datetimepicker2').datetimepicker({
-        step: 5
-    });
-</script>
 @stop

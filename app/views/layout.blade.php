@@ -1,19 +1,30 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Leave App</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head  profile="http://www.w3.org/2005/10/profile">
+        <link rel="icon" 
+        type="image/png" 
+        href="http://cdn.freefavicon.com/freefavicons/objects/boite-a-coche-checkbox-152-188866.png">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+        <title>Leave Application</title>
+
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 {{ HTML::Script('js/jquery-1.11.1.min.js') }}
 {{ HTML::Script('js/bootstrap.js') }}
 {{ HTML::Script('js/bootstrap-datetimepicker.js') }}
 {{ HTML::Style('css/bootstrap.css') }}
 {{ HTML::Style('css/jquery.datetimepicker.css') }}
+
+@yield('extrajs')
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="navbar-header" style="background:#CCC;">
-    	<a class="navbar-brand" href="{{ URL::to('/home')}}">Leave App</a>
+    	<a class="navbar-brand" href="{{ URL::to('/home')}}">Online Leave Application</a>
   	</div>
     <div class="col-md-8">
     	<div class="collapse navbar-collapse">
