@@ -39,7 +39,7 @@
     <td height="25" align="left">{{ $user->name }}&nbsp;</td>
     <td height="25" align="left">{{ $user->username }}&nbsp;</td>
     <td height="25" align="left" bgcolor="">{{ $user->email }}&nbsp;</td>
-    <td height="25" align="left" bgcolor="">{{ $user->type }}&nbsp;</td>
+    <td height="25" align="left" bgcolor="">{{ $user->user_type }}&nbsp;</td>
     <td align="left" class="action text-center">
     	<a href='{{ URL::to("user/edit/$user->id") }}' class="tooltip-top" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;
     	<a href="#" onClick="if(confirm('Are You Sure You Want To Delete?')) { document.location='{{ URL::to("user/destroy/$user->id") }}'; }" class="tooltip-top" title="Delete" ><i class="glyphicon glyphicon-trash"></i></a>
@@ -64,7 +64,13 @@
 		<div class="panel-body">
         {{ Form::open(array('url'=>'user/store','class'=>'form-horizontal','files'=>true)) }}
             <div class="form-group">
-            	<div class="col-sm-4">{{ Form::label('Name') }}</div>
+            	<div class="col-sm-4">{{ Form::label('Employee ID') }}</div>
+                <div class="col-sm-8">
+                    {{ Form::text('employee_id','',array('class'=>'form-control input-sm','required')) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4">{{ Form::label('Name') }}</div>
                 <div class="col-sm-8">
                     {{ Form::text('name','',array('class'=>'form-control input-sm','required')) }}
                 </div>
@@ -82,14 +88,41 @@
                 </div>
             </div>
             <div class="form-group">
+                <div class="col-sm-4">{{ Form::label('Mobile')}}</div>
+                <div class="col-sm-8">
+                    {{ Form::text('mobile',null,array('class'=>'form-control input-sm')) }}
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-sm-4">{{ Form::label('Email')}}</div>
                 <div class="col-sm-8">
                     {{ Form::email('email',null,array('class'=>'form-control input-sm')) }}
                 </div>
             </div>
             <div class="form-group">
+                <div class="col-sm-4">{{ Form::label('Sex') }}</div>
+                <div class="col-sm-8">{{ Form::select('sex',array(''=>'','Male'=>'Male',
+                                                                       'Female'=>'Female',
+                                                                       'Other' => 'Other'),
+                                                        null,array('class'=>'form-control input-sm','required')) }}</div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4">{{ Form::label('Date of Birth')}}</div>
+                <div class="col-sm-8">
+                    {{ Form::text('dob',null,array('class'=>'form-control input-sm','id'=>'datetimepicker1')) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4">{{ Form::label('Group') }}</div>
+                <div class="col-sm-8">{{ Form::select('group',array(''=>'','A'=>'A',
+                                                                       'B'=>'B',
+                                                                       'C'=>'C',
+                                                                       'D'=>'D'),
+                                                        null,array('class'=>'form-control input-sm','required')) }}</div>
+            </div>
+            <div class="form-group">
                 <div class="col-sm-4">{{ Form::label('Type') }}</div>
-                <div class="col-sm-8">{{ Form::select('type',array(''=>'','Administrator'=>'Administrator',
+                <div class="col-sm-8">{{ Form::select('user_type',array(''=>'','Administrator'=>'Administrator',
                                                                        'Employee'=>'Employee'),
                                                         null,array('class'=>'form-control input-sm','required')) }}</div>
             </div>
@@ -103,4 +136,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#datetimepicker1').datetimepicker({
+        step: 5
+    });
+
+    $('#datetimepicker2').datetimepicker({
+        step: 5
+    });
+</script>
 @stop
