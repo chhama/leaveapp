@@ -17,5 +17,7 @@ Route::post('login', ['uses'=>'UserController@authenticate','as'=>'login']);
 Route::group(array('before'=>'auth'),function(){
 	Route::get('/', ['uses'=>'HomeController@index','as'=>'index']);
 	Route::get('logout', ['uses'=>'UserController@logout','as'=>'logout']);
-
+	Route::resource('user','UserController'); 
+	Route::resource('leave','LeaveController'); 
+	Route::resource('leavetaken','LeaveTakenController'); 
 });

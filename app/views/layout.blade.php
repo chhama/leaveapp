@@ -17,15 +17,15 @@
     <div class="col-md-8">
     	<div class="collapse navbar-collapse">
     		<ul class="nav navbar-nav">
-          <li><a href="{{ URL::to('/')}}">Leave</a></li>
-          <li><a href="{{ URL::to('/')}}">Register Leave</a></li>
+          <li><a href="{{ URL::route('leave.index')}}">Leave</a></li>
+          <li><a href="{{ URL::route('leavetaken.index')}}">Register Leave</a></li>
     		</ul>
     	</div>
     </div>
     <div class="col-md-2">
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav pull-right">
-          <li><a href="{{ URL::to('/')}}">User</a></li>
+          <li><a href="{{ URL::route('user.index')}}">User</a></li>
           <li><a href="{{ URL::to('logout')}}">Logout</a></li>
         </ul>
       </div>

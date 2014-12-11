@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends \BaseController {
+class LeaveTakenController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,9 +9,7 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		$userAll = User::orderby('name')->paginate();
-		//dd($userAll);
-		return View::make('user.index',array('userAll'=>$userAll));
+		//
 	}
 
 
@@ -82,42 +80,6 @@ class UserController extends \BaseController {
 	public function destroy($id)
 	{
 		//
-	}
-
-	public function login(){
-		return View::make('login');
-	}
-
-	public function authenticate(){
-		$rules = array(
-			'username' => 'required',
-			'password' => 'required'
-			);
-
-		$validator = Validator::make(Input::all(), $rules);
-
-		if($validator->fails())
-		{
-			return Redirect::route('login')->withErrors($validator);
-		}
-		else
-		{
-			$attempt = Auth::attempt([
-					'username' => Input::get('username'),
-					'password' => Input::get('password')
-				]);
-
-			if ($attempt) {
-				return Redirect::to('/');
-			}
-			else
-				return Redirect::to('login')->with(['flash_message'=>'Invalid Username or Password'])->withInput();
-		}
-	}
-
-	public function logout(){
-		Auth::logout();
-		return Redirect::to('login');
 	}
 
 
