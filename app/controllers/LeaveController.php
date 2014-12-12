@@ -77,6 +77,14 @@ class LeaveController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		$leaveAll = Leave::orderby('type')->paginate();
+		$leaveById = Leave::find($id);
+		$index = $leaveAll->getPerPage() * ($leaveAll->getCurrentPage()-1) + 1;
+		return View::make('leave.edit',array(
+										'leaveAll'=>$leaveAll,
+										'index'=>$index,
+										'leaveById'=>$leaveById
+										));
 	}
 
 
@@ -103,7 +111,7 @@ class LeaveController extends \BaseController {
 			$leave->type			= Input::get('type');
 			$leave->max_allowed 	= Input::get('max_allowed');
 			if($leave->save())
-			return Redirect::back()->with(['flash_message'=>'Leave successfully created']);
+			return Redirect::back()->with(['flash_message'=>'Leave successfully updated']);
 		}
 	}
 
@@ -117,6 +125,9 @@ class LeaveController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+		Leave::destroy($id);
+		return Redirect::route('leave.index')->with(['flash_message'=>'Leave successfully Deleted']);
+
 	}
 
 
