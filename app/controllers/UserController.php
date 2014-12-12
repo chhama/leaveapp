@@ -65,7 +65,6 @@ class UserController extends \BaseController {
 			$user->total_half_pay_leave	= Input::get('total_half_pay_leave');
 			$user->remember_token 	= Input::get('_token');
 			if($user->save())
-
 			return Redirect::back()->with(['flash_message'=>'User successfully created']);
 		}
 	}
@@ -130,7 +129,8 @@ class UserController extends \BaseController {
 			$user->name 			= Input::get('name');
 			$user->mobile 			= Input::get('mobile');
 			$user->username 		= Input::get('username');
-			$user->password 		= Hash::make(Input::get('password'));
+			if(strlen(Input::get('password')) > 0)
+				$user->password 	= Hash::make(Input::get('password'));
 			$user->user_type 		= Input::get('user_type');
 			$user->sex 				= Input::get('sex');
 			$user->date_of_birth	= Input::get('date_of_birth');
@@ -156,7 +156,8 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		User::destroy($id);
+		return Redirect::route('user.index')->with(['flash_message'=>'User successfully Deleted']);
 	}
 
 	public function login(){

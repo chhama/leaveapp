@@ -29,11 +29,6 @@ $(document).ready(function() {
 		<input type='text' name='dzApparatusName' placeholder="Search By Name" class="form-control" value='<?php if(isset($_GET['dzGo'])){ echo $_GET['dzApparatusName'];} ?>'>
 	</div>
     <input type="submit" name="dzGo" value="GO" class="btn btn-info btn-sm"/>
-    <span class="pull-right">
-        <input type="submit" name="labs" value="Active" class="btn btn-info btn-sm"  />
-        <input type="submit" name="labs" value="InActive" class="btn btn-info btn-sm" />
-        <input type="submit" name="labs" value="Delete" class="btn btn-info btn-sm" />
-    </span>
 </div>
 <div class="panel-body" style="padding:0px;">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-hover" style="margin-bottom:0px;">
@@ -57,8 +52,10 @@ $(document).ready(function() {
     <td height="25" align="left" bgcolor="">{{ $user->email }}&nbsp;</td>
     <td height="25" align="left" bgcolor="">{{ $user->user_type }}&nbsp;</td>
     <td align="left" class="action text-center">
-    	<a href='{{ URL::route("user.edit",$user->id) }}' class="tooltip-top" title="Edit"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;
-    	<a href="#" onClick="if(confirm('Are You Sure You Want To Delete?')) { document.location='{{ URL::route("user.destroy",$user->id) }}'; }" class="tooltip-top" title="Delete" ><i class="glyphicon glyphicon-trash"></i></a>
+        {{Form::open(array('url'=>route('user.destroy', array($user->id)),'method'=>'delete'))}}
+            <a href="{{route('user.edit', array($user->id))}}" class="btn btn-xs btn-success tooltip-top" title="Edit User"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;
+            <button type="submit" onclick="return confirm ('<?php echo _('Are you sure') ?>');" name="id" class="btn btn-xs btn-danger tooltip-top" title="Remove User" value="{{$user->id}}"><i class="glyphicon glyphicon-trash"></i></button>
+        {{Form::close()}}
     </td>
     </tr>
     <?php $slno++; ?>
