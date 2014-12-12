@@ -121,6 +121,7 @@ $(document).ready(function() {
                                                         'C' =>'C',
                                                         'D' =>'D'),
                                     null,array('class'=>'form-control input-sm','required')) }}
+            </div>
             <div class="form-group">
                 {{ Form::label('Entry into Service')}}
                 {{ Form::text('entry_into_service',null,array('class'=>'form-control input-sm','id'=>'datetimepicker2')) }}
