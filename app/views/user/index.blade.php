@@ -10,14 +10,16 @@ $(document).ready(function() {
     $('#datetimepicker2').datetimepicker({
         step: 5
     });
+
+    $('#datetimepicker3').datetimepicker({
+        step: 5
+    });
 });
 </script>
 @stop
 
 @section('container')
 <div class="col-md-8">
-<form method="get">
-<input type="hidden" name="dz" value="apparatus" />
 <div class="panel panel-default">
 <div class="panel-heading">
 	<div class="col-md-3">
@@ -76,75 +78,73 @@ $(document).ready(function() {
 	<div class="panel panel-default">
 		<div class="panel-heading"><strong>NEW USER</strong></div>
 		<div class="panel-body">
-        {{ Form::open(array('url'=>'user/store','class'=>'form-horizontal','files'=>true)) }}
+        {{ Form::open(array('url'=>'user/store','class'=>'form-verticle','files'=>true)) }}
             <div class="form-group">
-            	<div class="col-sm-4">{{ Form::label('Employee ID') }}</div>
-                <div class="col-sm-8">
-                    {{ Form::text('employee_id','',array('class'=>'form-control input-sm','required')) }}
-                </div>
+            	{{ Form::label('Employee ID') }}
+                {{ Form::text('employee_id','',array('class'=>'form-control input-sm','required')) }}
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Name') }}</div>
-                <div class="col-sm-8">
-                    {{ Form::text('name','',array('class'=>'form-control input-sm','required')) }}
-                </div>
+                {{ Form::label('Name') }}
+                {{ Form::text('name','',array('class'=>'form-control input-sm','required')) }}
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Username') }}</div>
-                <div class="col-sm-8">
-                    {{ Form::text('username',null,array('class'=>'form-control input-sm','required')) }}
-                </div>
+                {{ Form::label('Username') }}
+                {{ Form::text('username',null,array('class'=>'form-control input-sm','required')) }}
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Password')}}</div>
-                <div class="col-sm-8">
-                    {{ Form::password('password',array('class'=>'form-control input-sm','required')) }}
-                </div>
+                {{ Form::label('Password')}}
+                {{ Form::password('password',array('class'=>'form-control input-sm','required')) }}
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Mobile')}}</div>
-                <div class="col-sm-8">
-                    {{ Form::text('mobile',null,array('class'=>'form-control input-sm')) }}
-                </div>
+                {{ Form::label('Mobile')}}
+                {{ Form::text('mobile',null,array('class'=>'form-control input-sm')) }}
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Email')}}</div>
-                <div class="col-sm-8">
-                    {{ Form::email('email',null,array('class'=>'form-control input-sm')) }}
-                </div>
+                {{ Form::label('Email')}}
+                {{ Form::email('email',null,array('class'=>'form-control input-sm')) }}
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Sex') }}</div>
-                <div class="col-sm-8">{{ Form::select('sex',array(''=>'','Male'=>'Male',
-                                                                       'Female'=>'Female',
-                                                                       'Other' => 'Other'),
-                                                        null,array('class'=>'form-control input-sm','required')) }}</div>
+                {{ Form::label('Sex') }}
+                {{ Form::select('sex',array(''=>'','Male'=>'Male',
+                                                   'Female'=>'Female',
+                                                   'Other' => 'Other'),
+                                    null,array('class'=>'form-control input-sm','required')) }}
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Date of Birth')}}</div>
-                <div class="col-sm-8">
-                    {{ Form::text('dob',null,array('class'=>'form-control input-sm','id'=>'datetimepicker1')) }}
-                </div>
+                {{ Form::label('Date of Birth')}}
+                {{ Form::text('dob',null,array('class'=>'form-control input-sm','id'=>'datetimepicker1')) }}
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Group') }}</div>
-                <div class="col-sm-8">{{ Form::select('group',array(''=>'','A'=>'A',
-                                                                       'B'=>'B',
-                                                                       'C'=>'C',
-                                                                       'D'=>'D'),
-                                                        null,array('class'=>'form-control input-sm','required')) }}</div>
+                {{ Form::label('Group') }}
+                {{ Form::select('group',array(''=>'','A'=>'A',
+                                                   'B'=>'B',
+                                                   'C'=>'C',
+                                                   'D'=>'D'),
+                                    null,array('class'=>'form-control input-sm','required')) }}
+            <div class="form-group">
+                {{ Form::label('Entry into Service')}}
+                {{ Form::text('entry_into_service',null,array('class'=>'form-control input-sm','id'=>'datetimepicker2')) }}
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Type') }}</div>
-                <div class="col-sm-8">{{ Form::select('user_type',array(''=>'','Administrator'=>'Administrator',
-                                                                       'Employee'=>'Employee'),
-                                                        null,array('class'=>'form-control input-sm','required')) }}</div>
+                {{ Form::label('Superannuation Date')}}
+                {{ Form::text('superannuation_date',null,array('class'=>'form-control input-sm','id'=>'datetimepicker3')) }}
             </div>
             <div class="form-group">
-            	<div class="col-sm-4"></div>
-                <div class="col-sm-8">
+                {{ Form::label('Total Earned Leave')}}
+                {{ Form::text('total_earned_leave',null,array('class'=>'form-control input-sm')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::label('Total Half Pay Leave')}}
+                {{ Form::text('total_half_pay_leave',null,array('class'=>'form-control input-sm')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::label('Type') }}
+                {{ Form::select('user_type',array(''=>'','Administrator'=>'Administrator',
+                                                         'Employee'=>'Employee'),
+                                             null,array('class'=>'form-control input-sm','required')) }}
+            </div>
+            <div class="form-group">
             	   {{ Form::submit('Save',array('class'=>'btn btn-success btn-sm')) }}
-                </div>
             </div>
         {{ Form::close() }}
         </div>

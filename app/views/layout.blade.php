@@ -23,10 +23,10 @@
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="navbar-header" style="background:#CCC;">
-    	<a class="navbar-brand" href="{{ URL::to('/home')}}">Online Leave Application</a>
+	<div class="navbar-header col-md-3" style="background:#CCC;">
+    	<a class="navbar-brand" href="{{ URL::to('/')}}">Online Leave Application</a>
   	</div>
-    <div class="col-md-8">
+    <div class="col-md-7">
     	<div class="collapse navbar-collapse">
     		<ul class="nav navbar-nav">
           <li><a href="{{ URL::route('leave.index')}}">Leave</a></li>
@@ -43,7 +43,7 @@
       </div>
     </div>
 </nav>
-<div class="container" style="margin-top:70px">
+<div class="container" style="margin-top:70px; margin-bottom:30px;">
   @if(Session::has('flash_message'))
       <p class="alert alert-success"><strong>{{ Session::get('flash_message') }}</strong></p>
   @endif
