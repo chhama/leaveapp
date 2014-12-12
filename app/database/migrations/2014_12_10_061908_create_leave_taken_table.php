@@ -20,7 +20,7 @@ class CreateLeaveTakenTable extends Migration {
 			$table->date('leave_to');
 			$table->integer('no_of_days')->length(3);
 			$table->enum('status',['Submitted','Approved','Rejected']);
-			$table->string('remark',255]);
+			$table->string('remark',255);
 			$table->timestamps();
 		});
 	}
