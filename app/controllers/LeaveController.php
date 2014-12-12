@@ -9,7 +9,12 @@ class LeaveController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$leaveAll = Leave::orderby('type')->paginate();
+		$index = $leaveAll->getPerPage() * ($leaveAll->getCurrentPage()-1) + 1;
+		return View::make('leave.index',array(
+										'leaveAll'=>$leaveAll,
+										'index'=>$index
+										));
 	}
 
 
@@ -31,7 +36,23 @@ class LeaveController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$credentials = array(
+				'type' 			=> 'required',
+				'max_allowed'	=> 'required'
+				);
+		$validator	= Validator::make(Input::all(),$credentials);
+		if($validator->fails()){
+			return Redirect::to('leave')
+								->withErrors($validator)
+								->withInput(Input::all())
+								->with(['flash_message'=>'Type & Max Allowed is required.']);
+		} else {
+			$leave = new Leave();
+			$leave->type			= Input::get('type');
+			$leave->max_allowed 	= Input::get('max_allowed');
+			if($leave->save())
+			return Redirect::back()->with(['flash_message'=>'Leave successfully created']);
+		}
 	}
 
 
@@ -67,7 +88,23 @@ class LeaveController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$credentials = array(
+				'type' 			=> 'required',
+				'max_allowed'	=> 'required'
+				);
+		$validator	= Validator::make(Input::all(),$credentials);
+		if($validator->fails()){
+			return Redirect::to('leave')
+								->withErrors($validator)
+								->withInput(Input::all())
+								->with(['flash_message'=>'Type & Max Allowed is required.']);
+		} else {
+			$leave = Leave::find($id);
+			$leave->type			= Input::get('type');
+			$leave->max_allowed 	= Input::get('max_allowed');
+			if($leave->save())
+			return Redirect::back()->with(['flash_message'=>'Leave successfully created']);
+		}
 	}
 
 

@@ -10,8 +10,11 @@ class UserController extends \BaseController {
 	public function index()
 	{
 		$userAll = User::orderby('name')->paginate();
-		//dd($userAll);
-		return View::make('user.index',array('userAll'=>$userAll));
+		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
+		return View::make('user.index',array(
+										'userAll'=>$userAll,
+										'index'=>$index
+										));
 	}
 
 

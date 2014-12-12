@@ -43,10 +43,10 @@ $(document).ready(function() {
   </tr>
   </thead>
   <tbody>
-  	<?php $slno = 1; ?>
+  	<?php $slno = 0; ?>
   	@foreach($userAll as $user)
   	<tr bgcolor="">
-    <td height="25" align="center">{{$slno}}</td>
+    <td height="25" align="center">{{$slno+$index}}</td>
     <td height="25" align="left">{{ $user->name }}&nbsp;</td>
     <td height="25" align="left">{{ $user->username }}&nbsp;</td>
     <td height="25" align="left" bgcolor="">{{ $user->email }}&nbsp;</td>
