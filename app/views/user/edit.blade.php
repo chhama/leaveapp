@@ -76,16 +76,16 @@ $(document).ready(function() {
 </div>
 <div class="col-md-4">
 	<div class="panel panel-default">
-		<div class="panel-heading"><strong>NEW USER</strong></div>
+		<div class="panel-heading"><strong>EDIT USER</strong></div>
 		<div class="panel-body">
-        {{ Form::open(['route'=>'user.store','class'=>'form-verticle'])}}
+        {{ Form::model($userById,array('url'=>route('user.update',$userById->id),'method'=>'put','class'=>'form-verticle')) }}
             <div class="form-group">
             	{{ Form::label('Employee ID') }}
-                {{ Form::text('employee_id','',array('class'=>'form-control input-sm','required')) }}
+                {{ Form::text('employee_id',null,array('class'=>'form-control input-sm','required')) }}
             </div>
             <div class="form-group">
                 {{ Form::label('Name') }}
-                {{ Form::text('name','',array('class'=>'form-control input-sm','required')) }}
+                {{ Form::text('name',null,array('class'=>'form-control input-sm','required')) }}
             </div>
             <div class="form-group">
                 {{ Form::label('Username') }}
@@ -105,9 +105,9 @@ $(document).ready(function() {
             </div>
             <div class="form-group">
                 {{ Form::label('Sex') }}
-                {{ Form::select('sex',array(''=>'','Male'=>'Male',
-                                                   'Female'=>'Female',
-                                                   'Other' => 'Other'),
+                {{ Form::select('group',array(''=>'',   'Male' =>'Male',
+                                                        'Female' =>'Female',
+                                                        'Other' =>'Other'),
                                     null,array('class'=>'form-control input-sm','required')) }}
             </div>
             <div class="form-group">
@@ -116,10 +116,10 @@ $(document).ready(function() {
             </div>
             <div class="form-group">
                 {{ Form::label('Group') }}
-                {{ Form::select('group',array(''=>'','A'=>'A',
-                                                   'B'=>'B',
-                                                   'C'=>'C',
-                                                   'D'=>'D'),
+                {{ Form::select('group',array(''=>'',   'A' =>'A',
+                                                        'B' =>'B',
+                                                        'C' =>'C',
+                                                        'D' =>'D'),
                                     null,array('class'=>'form-control input-sm','required')) }}
             <div class="form-group">
                 {{ Form::label('Entry into Service')}}

@@ -20,14 +20,14 @@ class CreateUsersTable extends Migration {
 			$table->string('name',50);
 			$table->string('mobile',10);
 			$table->string('email',70);
-			$table->enum('sex',['male','female','other']);
+			$table->enum('sex',['Male','Female','Other']);
 			$table->date('date_of_birth');
 			$table->enum('group',['A','B','C','D']);
 			$table->date('entry_into_service');
 			$table->date('superannuation_date');
 			$table->integer('total_earned_leave')->length(3);
 			$table->integer('total_half_pay_leave')->length(3);
-			$table->enum('user_type',['admin','employee']);
+			$table->enum('user_type',['Administrator','Employee']);
 			$table->string('remember_token');
 			$table->timestamps();
 		});
