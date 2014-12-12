@@ -16,14 +16,22 @@
 {{ HTML::Script('js/jquery-1.11.1.min.js') }}
 {{ HTML::Script('js/bootstrap.js') }}
 {{ HTML::Script('js/bootstrap-datetimepicker.js') }}
+{{ HTML::Script('js/material.min.js') }}
+{{ HTML::Script('js/npm.js') }}
+{{ HTML::Script('js/ripples.min.js') }}
+
 {{ HTML::Style('css/bootstrap.css') }}
 {{ HTML::Style('css/jquery.datetimepicker.css') }}
+<!-- {{ HTML::Style('css/custom.css') }} -->
+{{ HTML::Style('css/material.min.css') }}
+{{ HTML::Style('css/ripples.min.css') }}
+{{ HTML::Style('css/material-wfont.min.css') }}
 
 @yield('extrajs')
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="navbar-header col-md-3" style="background:#CCC;">
+	<div class="navbar-header col-md-3">
     	<a class="navbar-brand" href="{{ URL::to('/')}}">Online Leave Application</a>
   	</div>
     <div class="col-md-7">

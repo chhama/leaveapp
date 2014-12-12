@@ -17,7 +17,11 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		return View::make('dashboard');
+		if(Auth::user()->user_type == 'admin')
+			return View::make('dashboard.admin');
+		else
+			return View::make('dashboard.employee');
+
 	}
 
 }
