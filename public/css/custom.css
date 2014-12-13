@@ -1,5 +1,6 @@
 .dzFooter {
-	background-color: #31708f;
+	background-color: #ECEFF1;
+	font-color: #fff;
 }
 
 .navbar-header {
@@ -9,4 +10,8 @@
 
 .navbar-header > .navbar-brand {
 	color: #fff;
+}
+
+.navbar-inverse {
+  background-color:  #31708f;
 }
