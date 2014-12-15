@@ -27,7 +27,6 @@ class CreateUsersTable extends Migration {
 			$table->date('superannuation_date');
 			$table->integer('total_earned_leave')->length(3);
 			$table->integer('total_half_pay_leave')->length(3);
-			$table->integer('apply_to')->length(10);
 			$table->enum('user_type',['Administrator','Employee']);
 			$table->string('remember_token');
 			$table->timestamps();
