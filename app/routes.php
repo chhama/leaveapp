@@ -20,4 +20,6 @@ Route::group(array('before'=>'auth'),function(){
 	Route::resource('user','UserController'); 
 	Route::resource('leave','LeaveController'); 
 	Route::resource('leavetaken','LeaveTakenController'); 
+	Route::put('user/{id}/updateprofile', array('uses'=>'UserController@updateProfile','as'=>'user.updateprofile'));
+
 });

@@ -81,9 +81,48 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$userById = User::find($id);
+		return View::make('user.show')->with(array(
+										'userById'	=> $userById
+										));
 	}
 
+	public function updateProfile($id){
+		$user = new User();
+		$credentials = array(
+				'username' 		=> 'required|unique:'.$user->getTable().',username,'.$id,
+				'employee_id' 	=> 'required|unique:'.$user->getTable().',employee_id,'.$id,
+				'mobile' 		=> 'required|unique:'.$user->getTable().',mobile,'.$id,
+				'email' 		=> 'required|email|unique:'.$user->getTable().',email,'.$id
+				);
+		$validator	= Validator::make(Input::all(),$credentials);
+		if($validator->fails()){
+			return Redirect::to('user.show',Auth::user()->id)
+								->withErrors($validator)
+								->withInput(Input::all())
+								->with(['flash_message'=>'Username/Employee ID/Mobile/email should be unique']);
+		} else {
+			$user = User::find($id);
+			$user->employee_id		= Input::get('employee_id');
+			$user->name 			= Input::get('name');
+			$user->mobile 			= Input::get('mobile');
+			$user->username 		= Input::get('username');
+			if(strlen(Input::get('password')) > 0)
+				$user->password 	= Hash::make(Input::get('password'));
+			$user->sex 				= Input::get('sex');
+			$user->date_of_birth	= Input::get('date_of_birth');
+			$user->email 			= Input::get('email');
+			$user->group 			= Input::get('group');
+			$user->entry_into_service	= Input::get('entry_into_service');
+			$user->superannuation_date	= Input::get('superannuation_date');
+			$user->total_earned_leave 	= Input::get('total_earned_leave');
+			$user->total_half_pay_leave	= Input::get('total_half_pay_leave');
+			$user->remember_token 	= Input::get('_token');
+			if($user->save())
+
+			return Redirect::back()->with(['flash_message'=>'User successfully Updated']);
+		}
+	}
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -146,7 +185,7 @@ class UserController extends \BaseController {
 			$user->remember_token 	= Input::get('_token');
 			if($user->save())
 
-			return Redirect::back()->with(['flash_message'=>'User successfully created']);
+			return Redirect::back()->with(['flash_message'=>'User successfully Updated']);
 		}
 	}
 

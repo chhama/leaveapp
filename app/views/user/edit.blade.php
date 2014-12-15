@@ -69,7 +69,7 @@ $(document).ready(function() {
 	<div class="panel panel-default">
 		<div class="panel-heading"><strong>EDIT USER</strong></div>
 		<div class="panel-body">
-        {{ Form::model($userById,array('url'=>route('user.update',$userById->id),'method'=>'put','class'=>'form-verticle')) }}
+        {{ Form::model($userById,array('url'=>route('user.update',$userById->id),'method'=>'put','class'=>'form-vertical')) }}
             <div class="form-group">
             	{{ Form::label('Employee ID') }}
                 {{ Form::text('employee_id',null,array('class'=>'form-control input-sm','required')) }}
@@ -84,7 +84,7 @@ $(document).ready(function() {
             </div>
             <div class="form-group">
                 {{ Form::label('Password')}}
-                {{ Form::password('password',array('class'=>'form-control input-sm','required')) }}
+                {{ Form::password('password',array('class'=>'form-control input-sm')) }}
             </div>
             <div class="form-group">
                 {{ Form::label('Mobile')}}

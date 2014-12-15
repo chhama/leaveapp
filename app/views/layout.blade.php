@@ -47,6 +47,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="{{ URL::route('leave.index')}}">Leave Type</a></li>
       <li><a href="{{ URL::route('leavetaken.index')}}">Manage Leave</a></li>
+      <li><a href="{{ URL::route('user.index')}}">Manage User</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -55,7 +56,7 @@
         <ul class="dropdown-menu">
           <li class='strong'><a class='h4 text-center'>{{ Auth::user()->name }}</a></li>
           <!-- <li role="presentation" class="divider"></li> -->
-          <li><a class='btn btn-default' href="{{ URL::route('user.index')}}">Profile <i class=" mdi-action-account-circle"></i></a></li>
+          <li><a class='btn btn-default' href="{{ URL::route('user.show',Auth::user()->id) }}">Profile <i class=" mdi-action-account-circle"></i></a></li>
           <li><a class='btn btn-default' href="{{ URL::to('logout')}}">Logout <i class="alert-danger mdi-action-exit-to-app"></i> </a></li>
      
         </ul>
