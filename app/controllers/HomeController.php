@@ -17,11 +17,13 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		if(Auth::user()->user_type == 'admin')
+		if(Auth::user()->user_type == 'Administrator')
 			return View::make('dashboard.admin');
 		else{
-			
-			return View::make('dashboard.employee');
+			$adminlist = User::where('user_type','=','Administrator')->get();
+			$leavelist = Leave::get();
+			// dd($adminlist);
+			return View::make('dashboard.employee',compact('adminlist','leavelist'));
 		}
 
 	}

@@ -31,7 +31,23 @@ class LeaveTakenController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// $ga= strtotime(Input::get('dateto')) - strtotime(Input::get('datefrom'));	
+		     // echo floor($ga/(60*60*24));
+
+		$leave = new LeaveTaken();
+
+		$leave->user_id = Auth::user()->id;
+		$leave->leave_id = Input::get('selectLeave');
+		$leave->leave_from = Input::get('datefrom');
+		$leave->leave_to = Input::get('dateto');
+		$leave->no_of_days = Input::get('totaldays');
+		$leave->apply_to = Input::get('selectApprover');
+		$leave->status = 'Submitted';
+		$leave->reason = Input::get('reason');
+		$leave->remark = '';
+
+		if($leave->save())
+			return Redirect::back()->with(['flash_message'=>'Leave application submitted successfully.']);
 	}
 
 

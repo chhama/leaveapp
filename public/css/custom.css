@@ -27,9 +27,12 @@ textarea.form-control {
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
+    text-indent: 5px;
 }
 
-
+.form-group .control-label {
+	text-align: left;
+}
 @media (min-width: 767px) {
 	.navbar-nav > li > .dropdown-menu {
 		margin-top: 20px;
