@@ -19,8 +19,10 @@ class HomeController extends BaseController {
 	{
 		if(Auth::user()->user_type == 'admin')
 			return View::make('dashboard.admin');
-		else
+		else{
+			
 			return View::make('dashboard.employee');
+		}
 
 	}
 

@@ -1,6 +1,5 @@
 .dzFooter {
-	background-color: #ECEFF1;
-	font-color: #fff;
+	color: #fff;
 }
 
 .navbar-header {
@@ -14,4 +13,47 @@
 
 .navbar-inverse {
   background-color:  #31708f;
+}
+
+input.form-control,
+input.form-control:active,
+select.form-control,
+select.form-control:active,
+textarea.form-control {
+	margin:0;
+    padding:0;
+    border:1px solid #ddd;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+
+@media (min-width: 767px) {
+	.navbar-nav > li > .dropdown-menu {
+		margin-top: 20px;
+		margin-right: 42px;
+		border-top-left-radius: 6;
+	}
+
+	.dropdown-toggle {
+		margin-bottom:-40px;
+	}
+	.navbar .navbar-nav>.open>a, .navbar .navbar-nav>.open>a:hover, .navbar .navbar-nav>.open>a:focus {
+	background-color: rgba(0,0,0,0);
+	}
+}
+
+@media (max-width: 767px) {
+	.navbar-nav > li > .dropdown-menu {
+		margin-top: -20px;
+		margin-right: 0px;
+		border-top-left-radius: 6px;
+
+	}
+
+	.panel {
+		margin-top: 40px;
+	}
 }

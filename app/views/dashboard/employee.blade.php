@@ -1,4 +1,23 @@
 @extends('layout')
+@section('extrajs')
+<script language="javascript">
+$(document).ready(function() {
+    $('#datefrom').datetimepicker({
+		timepicker:false,
+		format:' Y/m/d',
+		formatDate:'Y/m/d',
+	});
+
+    $('#dateto').datetimepicker({
+	    timepicker:false,
+		format:'Y/m/d',
+		formatDate:'Y/m/d',
+    });
+
+    
+});
+</script>
+@stop
 <div class="col-md-12 col-xs-offset-0">
 <!-- <div class="panel panel-info"> -->
 	<div class="panel-body">
@@ -18,87 +37,62 @@
 		<div class="panel panel-default">
 			
 			<div class="panel-body">
-				<a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised mdi-action-today pull-right"></a>
+				<!-- <a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised mdi-action-today pull-right"></a> -->
 
 				<h2 class='header'>Apply leave</h2>
 
-			   <form class="form-vertical">
+		{{Form::open(['url'=>'leave.store','class'=>'form-horizontal'])}}
+			   <form class="form-horizontal">
     <fieldset>
         
         <div class="form-group">
-            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+            <label for="selectLeave" class="col-lg-2 control-label">Leave Type</label>
             <div class="col-lg-10">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-            <div class="col-lg-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Checkbox
-                    </label>
-                </div>
-                <br>
-                <div class="togglebutton">
-                    <label>
-                        <input type="checkbox" checked=""> Toggle button
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputFile" class="col-lg-2 control-label">File</label>
-            <div class="col-lg-10">
-                <input type="text" readonly="" class="form-control floating-label" placeholder="Browse...">
-                <input type="file" id="inputFile" multiple="">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-            <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="textArea"></textarea>
-                <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Radios</label>
-            <div class="col-lg-10">
-                <div class="radio radio-primary">
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                        Option one is this
-                    </label>
-                </div>
-                <div class="radio radio-primary">
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                        Option two can be something else
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="select" class="col-lg-2 control-label">Selects</label>
-            <div class="col-lg-10">
-                <select class="form-control" id="select">
-                    <option>1</option>
-                    <option>2</option>
+                <select class="form-control" id="selectLeave">
+                    <option>Earned Leave</option>
+                    <option>Half Pay Leave</option>
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
                 </select>
-                <br>
-                <select multiple="" class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
+                
             </div>
         </div>
+
+         <div class="form-group">
+            <label for="selectApprover" class="col-lg-2 control-label">Apply To</label>
+            <div class="col-lg-10">
+                <select class="form-control" id="selectApprover">
+                    <option>CIO, DICT</option>
+                    <option>DD(A), DICT</option>
+                    <option>PM, MSEGS</option>
+                    <option>CEO, MSEGS</option>
+                    <option>5</option>
+                </select>
+                
+            </div>
+        </div>
+        
+	    <div class="form-group">
+	       <div class="input-group">
+	       		<label for="inputDateFrom" class="col-lg-2 control-label">From</label>
+	       		<div class="col-lg-4">
+	       			<input type="text" class="form-control" id="datefrom">
+	       		</div>
+	       		<label for="inputDateTo" class="col-lg-2 control-label">To</label>
+	       		<div class="col-lg-4">
+	       			<input type="text" class="form-control" id="dateto">
+	       		</div>
+	       </div>
+		</div>
+
+        <div class="form-group">
+            <label for="reason" class="col-lg-2 control-label">Reason</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="reason"></textarea>
+            </div>
+        </div>
+       
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
                 <button class="btn btn-default">Cancel</button>
@@ -106,7 +100,8 @@
             </div>
         </div>
     </fieldset>
-</form>
+	{{Form::close()}}
+
 			</div>
 		</div>
 	</div>

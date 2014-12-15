@@ -3,7 +3,7 @@
 <head  profile="http://www.w3.org/2005/10/profile">
         <link rel="icon" 
         type="image/png" 
-        href="http://cdn.freefavicon.com/freefavicons/objects/boite-a-coche-checkbox-152-188866.png">
+        href="http://www.freefavicon.com/freefavicons/objects/clock-without-frame-152-190979.png">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,7 @@
 @yield('extrajs')
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top shadow-z-5" role="navigation" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top shadow-z-3 navbar-static-top" role="navigation" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -51,10 +51,12 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
 
-        <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown"><i class="btn btn-warning btn-fab btn-raised mdi-action-perm-identity" style="margin-bottom:-40px;"><b class="caret"></b> </i></a>
+        <a href="#" class="dropdown-toggle pull-left" data-toggle="dropdown"><i class="btn btn-danger btn-fab btn-raised mdi-action-perm-identity status-btn"><b class="caret"></b> </i></a>
         <ul class="dropdown-menu">
-          <li><a href="{{ URL::route('user.index')}}">Profile <i class="mdi-action-account-circle"></i></a></li>
-          <li><a href="{{ URL::to('logout')}}">Logout <i class="mdi-action-exit-to-app"></i></a></li>
+          <li class='strong'><a class='h4 text-center'>{{ Auth::user()->name }}</a></li>
+          <!-- <li role="presentation" class="divider"></li> -->
+          <li><a class='btn btn-default' href="{{ URL::route('user.index')}}">Profile <i class=" mdi-action-account-circle"></i></a></li>
+          <li><a class='btn btn-default' href="{{ URL::to('logout')}}">Logout <i class="alert-danger mdi-action-exit-to-app"></i> </a></li>
      
         </ul>
       </li>
@@ -70,8 +72,8 @@
   @endif
 	@yield('container')
 </div>
-<footer class="dzFooter nav navbar-default text-center" style="position:fixed; bottom:0px; width:100%; height:50px; padding-top:15px; color:#000 ">
-    Copyright &copy; MSeGS <?=date('Y')?> 
+<footer class=" navbar navbar-inverse navbar-fixed-bottom text-center dzFooter" >
+     <i class="glyphicon glyphicon-cloud-download"></i><br>Copyright &copy;  MSeGS <?=date('Y')?> 
 </footer>
 </body>
 </html>
