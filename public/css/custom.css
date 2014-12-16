@@ -16,6 +16,7 @@
 }
 
 input.form-control,
+input.input-sm,
 input.form-control:active,
 select.form-control,
 select.form-control:active,
@@ -28,6 +29,8 @@ textarea.form-control {
     vertical-align:baseline;
     background:transparent;
     text-indent: 5px;
+    width: 100%;
+    border-radius: 3;
 }
 
 .form-group .control-label {

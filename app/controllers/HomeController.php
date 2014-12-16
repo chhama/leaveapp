@@ -17,8 +17,10 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		if(Auth::user()->user_type == 'Administrator')
-			return View::make('dashboard.admin');
+		if(Auth::user()->user_type == 'Administrator'){
+			$pending_leave=LeaveTaken::where('apply_to','=',Auth::user()->id)->join('users','users.id','=','leave_taken.user_id')->join('leave','leave_taken.leave_id','=','leave.id')->paginate(10,['users.name as username','reason','leave_from','leave_to','no_of_days','leave_taken.id as leave_id','leave.type as leave_type','users.total_earned_leave','users.total_half_pay_leave']);
+			return View::make('dashboard.admin',compact('pending_leave'));
+		}
 		else{
 			$adminlist = User::where('user_type','=','Administrator')->get();
 			$leavelist = Leave::get();
