@@ -69,7 +69,7 @@ $(document).ready(function() {
 	<div class="panel panel-default">
 		<div class="panel-heading"><strong>NEW USER</strong></div>
 		<div class="panel-body">
-        {{ Form::open(['route'=>'user.store','class'=>'form-verticle'])}}
+        {{ Form::open(['route'=>'user.store','class'=>'form'])}}
             <div class="form-group">
             	{{ Form::label('Employee ID') }}
                 {{ Form::text('employee_id','',array('class'=>'form-control input-sm','required')) }}

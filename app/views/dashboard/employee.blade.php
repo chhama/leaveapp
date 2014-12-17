@@ -38,46 +38,46 @@ $(document).ready(function() {
 					{{Form::open(['route'=>'leavetaken.store','class'=>'form','role'=>'form'])}}
 				    <fieldset>    
 				        <div class="form-group">
-				        <div class="input-group">
+				        <!-- <div class="input-group"> -->
 				            <label for="selectLeave" class="control-label">Leave Type</label>
-				                <select class="form-control" id="selectLeave" name="selectLeave">
+				                <select class="form-control select" id="selectLeave" name="selectLeave" width='100%'>
 				                    @foreach($leavelist as $leave)
 									{{ "<option value=".$leave->id.">".$leave->type."</option>"; }}
 							   		@endforeach
 				                </select>  
-				        </div>
+				        <!-- </div> -->
 				        </div>
 
 				        <div class="form-group">
-				       	<div class="input-group">
+				       	<!-- <div class="input-group"> -->
 				            <label for="selectApprover" class="control-label">Apply To</label>
 				                <select class="form-control" id="selectApprover" name="selectApprover">
 				                	@foreach($adminlist as $admin)
 										{{ "<option value=".$admin->id.">".$admin->name."</option>";}}
 							   		@endforeach
 				                </select>        
-				        </div>
+				        <!-- </div> -->
 				        </div>
 				        
 					    <div class="form-group">
-					       <div class="input-group">
+					       <!-- <div class="input-group"> -->
 					       		<label for="inputDateFrom" class="control-label">From</label>
-					       			<input type="text" class="form-control" id="datefrom" name="datefrom" size="10">
-					       	</div>
+					       			<input type="text" class="form-control input-sm" id="datefrom" name="datefrom" size="10">
+					       	<!-- </div> -->
 					    </div>
 					    
 					    <div class="form-group">
-					    	<div class="input-group">   	
+					    	<!-- <div class="input-group">   	 -->
 					       		<label for="inputDateTo" class="control-label">To</label>
 					       			<input type="text" class="form-control" id="dateto" name="dateto" size="12">
-					       </div>
+					       <!-- </div> -->
 						</div>
 
 						<div class="form-group">
-							<div class="input-group">
+							<!-- <div class="input-group"> -->
 								<label for="totaldays" class="control-label">Total days</label>
 									<input type="text" class="form-control" id="totaldays" name="totaldays" size="6">
-							</div>
+							<!-- </div> -->
 						</div>
 
 				        <div class="form-group">

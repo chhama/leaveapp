@@ -43,7 +43,7 @@ $(document).ready(function() {
 							{{ "<tr><td>".$pending->username."</td><td>".$pending->leave_type}} @if($pending->leave_type == "Earned Leave") {{ "(".$pending->total_earned_leave.")" }} @endif @if($pending->leave_type == "Half Pay Leave") {{ "(".$pending->total_half_pay_leave.")" }} @endif
 							{{"</td><td>".$pending->leave_from."</td><td>".$pending->leave_to."</td><td>".$pending->no_of_days."</td><td>".$pending->reason."</td>"}}
 						{{Form::open(['route'=>'leavetaken.reject','method'=>'POST','class'=>'form'])}}
-							{{"<td><input type='text' name='reject_remark'></td><td><button type='submit' class='btn btn-fab btn-fab-mini btn-raised btn-sm btn-danger tiny-btn' value=".$pending->leave_id." name='leave_id'  data-toggle='tooltip' data-placement='left' title='Reject Application'><i class='glyphicon glyphicon-remove-circle'></i></button> <a href=".route('leavetaken.accept',[$pending->leave_id])." class='btn btn-fab btn-fab-mini btn-raised btn-sm btn-success tiny-btn'><i class='glyphicon glyphicon-ok-circle'></i></a></td></tr>" }}
+							{{"<td><input type='text' name='reject_remark'></td><td><button type='submit' class='btn btn-fab btn-fab-mini btn-raised btn-sm btn-danger tiny-btn' value=".$pending->leave_id." name='leave_id'  data-toggle='tooltip' data-placement='left' title='Reject Application'><i class='glyphicon glyphicon-remove'></i></button> <a href=".route('leavetaken.accept',[$pending->leave_id])." class='btn btn-fab btn-fab-mini btn-raised btn-sm btn-success tiny-btn'><i class='glyphicon glyphicon-ok-sign'></i></a></td></tr>" }}
 						{{Form::close()}}
 						@endforeach						
 					</tbody>
@@ -63,46 +63,46 @@ $(document).ready(function() {
 					{{Form::open(['route'=>'leavetaken.store','class'=>'form','role'=>'form'])}}
 				    <fieldset>    
 				        <div class="form-group">
-				        <div class="input-group">
+				        <!-- <div class="input-group"> -->
 				            <label for="selectLeave" class="control-label">Leave Type</label>
 				                <select class="form-control" id="selectLeave" name="selectLeave">
 				                    @foreach($leavelist as $leave)
 									{{ "<option value=".$leave->id.">".$leave->type."</option>"; }}
 							   		@endforeach
 				                </select>  
-				        </div>
+				        <!-- </div> -->
 				        </div>
 
 				        <div class="form-group">
-				       	<div class="input-group">
+				       	<!-- <div class="input-group"> -->
 				            <label for="selectApprover" class="control-label">Apply To</label>
 				                <select class="form-control" id="selectApprover" name="selectApprover">
 				                	@foreach($adminlist as $admin)
 										{{ "<option value=".$admin->id.">".$admin->name."</option>";}}
 							   		@endforeach
 				                </select>        
-				        </div>
+				        <!-- </div> -->
 				        </div>
 				        
 					    <div class="form-group">
-					       <div class="input-group">
+					       <!-- <div class="input-group"> -->
 					       		<label for="inputDateFrom" class="control-label">From</label>
 					       			<input type="text" class="form-control" id="datefrom" name="datefrom" size="10">
-					       	</div>
+					       	<!-- </div> -->
 					    </div>
 					    
 					    <div class="form-group">
-					    	<div class="input-group">   	
+					    	<!-- <div class="input-group">   	 -->
 					       		<label for="inputDateTo" class="control-label">To</label>
 					       			<input type="text" class="form-control" id="dateto" name="dateto" size="12">
-					       </div>
+					       <!-- </div> -->
 						</div>
 
 						<div class="form-group">
-							<div class="input-group">
+							<!-- <div class="input-group"> -->
 								<label for="totaldays" class="control-label">Total days</label>
 									<input type="text" class="form-control" id="totaldays" name="totaldays" size="6">
-							</div>
+							<!-- </div> -->
 						</div>
 
 				        <div class="form-group">
