@@ -44,10 +44,10 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="{{ URL::route('leave.index')}}"><i class="fa fa-calendar"></i> Leave </a></li>
-      <li><a href="{{ URL::route('user.index')}}"><i class="fa fa-users"></i> Users</a></li>
-    </ul>
+    @if(Auth::user()->user_type=='Administrator') 
+    {{ "<ul class='nav navbar-nav'><li class='active'><a href=".URL::route('leave.index')."><i class='fa fa-calendar'></i> Leave </a></li>" }}
+    {{  "<li><a href=".URL::route('user.index')."><i class='fa fa-users'></i> Users</a></li></ul>" }}
+    @endif
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
 
