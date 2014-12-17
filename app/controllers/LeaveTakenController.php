@@ -95,7 +95,42 @@ class LeaveTakenController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+
+	}
+
+	public function accept($id)
+	{
+		$leave = LeaveTaken::find($id);
+		$userleave = User::where('id','=',$leave->user_id)->first();
+			if($leave->leave_id == 1){
+				if($userleave->total_earned_leave - $leave->no_of_days >= 0){
+					$userleave->total_earned_leave = $userleave->total_earned_leave - $leave->no_of_days;
+					// $userleave->save();
+				}
+				else
+					return Redirect::back()->with(['flash_message'=>'Not enough Earned Leave remaining.']);
+			}
+			if($leave->leave_id == 2) {
+				if($userleave->total_half_pay_leave - $leave->no_of_days >= 0){
+					$userleave->total_half_pay_leave = $userleave->total_half_pay_leave - $leave->no_of_days;
+					// $userleave->save();
+				}
+				else
+					return Redirect::back()->with(['flash_message'=>'Not enough Half Pay Leave remaining.']);
+			}
+		$leave->status = "Approved";
+		if($leave->save() && $userleave->save()) {
+			return Redirect::back()->with(['flash_message'=>'Leave Application Approved']);
+		}
+	}
+	public function reject($id)
+	{
+		$leave = LeaveTaken::find(Input::get('leave_id'));
+		$leave->status = "Rejected";
+		$leave->remark = Input::get('reject_remark');
+		if($leave->save()){
+			return Redirect::back()->with(['flash_message'=>'Leave Rejected']);
+		}
 	}
 
 

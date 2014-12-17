@@ -63,3 +63,9 @@ textarea.form-control {
 		margin-top: 40px;
 	}
 }
+
+.btn.btn-fab.btn-fab-mini.btn-raised.btn-sm.tiny-btn {
+	width:30px; 
+	height:30px; 
+	padding:10px 4px 10px 4px;
+}

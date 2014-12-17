@@ -21,5 +21,7 @@ Route::group(array('before'=>'auth'),function(){
 	Route::resource('leave','LeaveController'); 
 	Route::resource('leavetaken','LeaveTakenController'); 
 	Route::put('user/{id}/updateprofile', array('uses'=>'UserController@updateProfile','as'=>'user.updateprofile'));
+	Route::post('leavetaken/{id}/reject',['uses'=>'LeaveTakenController@reject','as'=>'leavetaken.reject']);
+	Route::get('leavetaken/{id}/accept',['uses'=>'LeaveTakenController@accept','as'=>'leavetaken.accept']);
 
 });

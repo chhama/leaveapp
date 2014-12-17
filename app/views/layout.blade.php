@@ -74,7 +74,7 @@
 	@yield('container')
 </div>
 <footer class=" navbar navbar-inverse navbar-fixed-bottom text-center dzFooter" >
-     <i class="glyphicon glyphicon-cloud-download"></i><br>Copyright &copy;  MSeGS <?=date('Y')?> 
+     <i class="navbar-brand glyphicon glyphicon-cloud-download"></i><br>Copyright &copy;  MSeGS <?=date('Y')?> 
 </footer>
 </body>
 </html>
