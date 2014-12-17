@@ -18,11 +18,10 @@ $(document).ready(function() {
 });
 </script>
 @stop
-<div class="col-md-12 col-xs-offset-0">
-<!-- <div class="panel panel-info"> -->
-	<!-- <div class="panel-body"> -->
+@section('container')
+<div class="container-fluid">
 	   
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised mdi-action-assessment pull-right"></a>
@@ -30,7 +29,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<div class="panel panel-default">
 				<div class="panel-body">
 					<!-- <a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised mdi-action-today pull-right"></a> -->
@@ -87,7 +86,7 @@ $(document).ready(function() {
 				        </div>
 				       
 				        <div class="form-group">
-				            <div class="col-lg-10 col-lg-offset-2">
+				            <div class="col-lg-12 col-lg-offset-0">
 				                <button class="btn btn-warning">Cancel</button>
 				                <button type="submit" class="btn btn-primary">Submit</button>
 				            </div>
@@ -101,3 +100,4 @@ $(document).ready(function() {
 	</div>
 <!-- </div> -->
 </div>
+@stop

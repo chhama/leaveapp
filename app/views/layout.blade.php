@@ -45,9 +45,8 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="{{ URL::route('leave.index')}}">Leave Type</a></li>
-      <li><a href="{{ URL::route('leavetaken.index')}}">Manage Leave</a></li>
-      <li><a href="{{ URL::route('user.index')}}">Manage User</a></li>
+      <li class="active"><a href="{{ URL::route('leave.index')}}"><i class="fa fa-calendar"></i> Leave </a></li>
+      <li><a href="{{ URL::route('user.index')}}"><i class="fa fa-users"></i> Users</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -66,12 +65,13 @@
   </div><!-- /.navbar-collapse -->
 </nav>
 
-
-<div class="container" style="margin-top:70px; margin-bottom:30px;">
+<div class="col-lg-12">
+<div class="container" style="margin-top:70px; margin-bottom:30px; width:100%;">
   @if(Session::has('flash_message'))
       <p class="alert alert-success"><strong>{{ Session::get('flash_message') }}</strong></p>
   @endif
 	@yield('container')
+</div>
 </div>
 <footer class=" navbar navbar-inverse navbar-fixed-bottom text-center dzFooter" >
      <i class="navbar-brand glyphicon glyphicon-cloud-download"></i><br>Copyright &copy;  MSeGS <?=date('Y')?> 
