@@ -22,9 +22,10 @@ $(document).ready(function() {
 <div class="col-md-8">
 <div class="panel panel-default">
 <div class="panel-heading">
-    <h5><strong>MANAGE LEAVE</strong></h5>  
+    <h5><strong>MANAGE USER</strong></h5>  
 </div>
 <div class="panel-body" style="padding:0px;">
+<div class="table-responsive">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-hover" style="margin-bottom:0px;">
 <thead>
   <tr>
@@ -61,6 +62,7 @@ $(document).ready(function() {
 </tr>
 </tfoot>
 </table>
+</div>
  </div>
 </div>
 </form>
