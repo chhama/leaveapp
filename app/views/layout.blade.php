@@ -27,7 +27,15 @@
 {{ HTML::Style('css/material-wfont.min.css') }}
 {{ HTML::Style('css/custom.css') }}
 
+<script language="javascript">
+  $('li a').click(function(e) {
+        e.preventDefault();
+        $('a').removeClass('active');
+        $(this).addClass('active');
+    });
+</script>
 @yield('extrajs')
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top shadow-z-3 navbar-static-top" role="navigation" role="navigation">
@@ -45,8 +53,8 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     @if(Auth::user()->user_type=='Administrator') 
-    {{ "<ul class='nav navbar-nav'><li class='active'><a href=".URL::route('leave.index')."><i class='fa fa-calendar'></i> Leave </a></li>" }}
-    {{  "<li><a href=".URL::route('user.index')."><i class='fa fa-users'></i> Users</a></li></ul>" }}
+    {{ "<ul class='nav navbar-nav'><li class='toplink'><a href=".URL::route('leave.index')."><i class='fa fa-calendar'></i> Leave </a></li>" }}
+    {{  "<li class='toplink'><a href=".URL::route('user.index')."><i class='fa fa-users'></i> Users</a></li></ul>" }}
     @endif
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">

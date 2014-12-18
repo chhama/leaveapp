@@ -33,6 +33,11 @@ textarea.form-control {
     border-radius: 3;
 }
 
+.navbar .navbar-nav > li.toplink > a:hover{
+	color:#aadaee;
+	border-bottom: 3px solid #aadaff;
+}
+
 .form-group .control-label {
 	text-align: left;
 }
