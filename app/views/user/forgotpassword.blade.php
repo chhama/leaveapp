@@ -36,33 +36,32 @@
     @if(Session::has('flash_message'))
       <p class="alert alert-success"><strong>{{ Session::get('flash_message') }}</strong></p>
     @endif
-	<div class="panel panel-default">
-		<div class="panel-heading"><strong>Leave App</strong></div>
-		<div class="panel-body">
-        {{ Form::open(array('url'=>'login','class'=>'form-horizontal','files'=>true)) }}
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>FORGOT PASSWORD</strong></div>
+        <div class="panel-body">
+        {{Form::open(['route'=>'submitforgot','class'=>'form-horizontal'])}}
             <div class="form-group">
-            	<div class="col-sm-4">{{ Form::label('Username') }}</div>
-                <div class="col-sm-8">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    {{ Form::label('Username') }}
                     {{ Form::text('username','',array('class'=>'form-control input-sm','required','id'=>'login_uname')) }}
                 </div>
+                <div class="col-sm-1"></div>
             </div>
             <div class="form-group">
-                <div class="col-sm-4">{{ Form::label('Password')}}</div>
-                <div class="col-sm-8">
-                     {{ Form::password('password',array('class'=>'form-control input-sm','required')) }}
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    {{ Form::label('Registered Mobile No.')}}
+                     {{ Form::text('mobile','',array('class'=>'form-control input-sm','required')) }}
                 </div>
+                <div class="col-sm-1"></div>
             </div>
             <div class="form-group">
-            	<div class="col-sm-4"></div>
-                <div class="col-sm-8">
-            	   {{ Form::submit('Login',array('class'=>'btn btn-success btn-block')) }}
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                   {{ Form::submit('Reset Password',array('class'=>'btn btn-success btn-block')) }}
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-8">
-                    <a href="{{ URL::route('forgotpassword')}}">FORGOT PASSWORD</a>
-                </div>
+                <div class="col-sm-1"></div>
             </div>
         {{ Form::close() }}
         </div>
