@@ -46,21 +46,19 @@ class LeaveTakenController extends \BaseController {
 		$leave->reason = Input::get('reason');
 		$leave->remark = '';
 
-		Session::set('otp',$otp);
-        $message = 'New leave application from '.Auth::user()->name.' Please review the application.';
-        $phone = Auth::user()->mobile;
+        $employee = Auth::user()->name;
+        $phone = User::where('id','=',Input::get('selectApprover'))->select('mobile')->first();
 
         include("../app/config/local/sms.php");
         
-
 		$post = curl_init();
-		curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".$user."&pwd=".$password."&senderid=".$sender."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
+		curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".$user."&pwd=".$password."&senderid=".$sender."&to=".$phone->mobile."&msg=".urlencode("New leave application from $employee. Please review the application.")."&route=T");
 		//curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".urlencode($user)."&pwd=".urlencode($pass)."&senderid=".urlencode($sender)."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
-		curl_exec($post);
-		curl_close($post);
 
-		if($leave->save())
+		if($leave->save() && curl_exec($post)){
+			curl_close($post);
 			return Redirect::back()->with(['flash_message'=>'Leave application submitted successfully.']);
+		}
 	}
 
 
@@ -132,16 +130,33 @@ class LeaveTakenController extends \BaseController {
 					return Redirect::back()->with(['flash_message'=>'Not enough Half Pay Leave remaining.']);
 			}
 		$leave->status = "Approved";
-		if($leave->save() && $userleave->save()) {
+
+		$phone = User::where('id','=',$leave->user_id)->select('mobile')->first();
+        include("../app/config/local/sms.php");
+        
+		$post = curl_init();
+		curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".$user."&pwd=".$password."&senderid=".$sender."&to=".$phone->mobile."&msg=".urlencode("Your application for Earned Leave from $leave->leave_from to $leave->leave_to is approved. Remaining Earned leave: $userleave->total_earned_leave. Remaining Half Pay leave: $userleave->total_half_pay_leave.")."&route=T");
+
+		if($leave->save() && $userleave->save() && curl_exec($post)) {
+			curl_close($post);
 			return Redirect::back()->with(['flash_message'=>'Leave Application Approved']);
 		}
 	}
+
 	public function reject($id)
 	{
 		$leave = LeaveTaken::find(Input::get('leave_id'));
 		$leave->status = "Rejected";
 		$leave->remark = Input::get('reject_remark');
-		if($leave->save()){
+
+		$phone = User::where('id','=',$leave->user_id)->select('mobile')->first();
+        include("../app/config/local/sms.php");
+        
+		$post = curl_init();
+		curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".$user."&pwd=".$password."&senderid=".$sender."&to=".$phone->mobile."&msg=".urlencode("Your application for Earned Leave from $leave->leave_from to $leave->leave_to has been rejected. Login to view the remark.")."&route=T");
+
+		if($leave->save() && curl_exec($post)){
+			curl_close($post);
 			return Redirect::back()->with(['flash_message'=>'Leave Rejected']);
 		}
 	}
