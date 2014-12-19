@@ -46,6 +46,19 @@ class LeaveTakenController extends \BaseController {
 		$leave->reason = Input::get('reason');
 		$leave->remark = '';
 
+		Session::set('otp',$otp);
+        $message = 'New leave application from '.Auth::user()->name.' Please review the application.';
+        $phone = Auth::user()->mobile;
+
+        include("../app/config/local/sms.php");
+        
+
+		$post = curl_init();
+		curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".$user."&pwd=".$password."&senderid=".$sender."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
+		//curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".urlencode($user)."&pwd=".urlencode($pass)."&senderid=".urlencode($sender)."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
+		curl_exec($post);
+		curl_close($post);
+
 		if($leave->save())
 			return Redirect::back()->with(['flash_message'=>'Leave application submitted successfully.']);
 	}
