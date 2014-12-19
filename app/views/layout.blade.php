@@ -38,7 +38,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top shadow-z-3 navbar-static-top" role="navigation" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top shadow-z-2 navbar-static-top" role="navigation" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
